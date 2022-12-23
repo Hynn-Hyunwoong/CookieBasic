@@ -1,15 +1,28 @@
-const express = require('express')
+const express = require("express")
+const nunjucks = require("nunjucks")
 const app = express()
-const nunjucks = require('nunjucks')
+const router = require("./routes")
+const cookieParser = require('cookie-parser')
 
-app.set('view engine', 'html')
-nunjucks.configure('views', {
-    express: app
+
+//Nunjucks Engine Plugin
+app.set("view engine", "html")
+nunjucks.configure("views", {
+    express: app,
 })
 
-app.use(express.static("public"))
-app.use(express.unlencoded({extended:false}))
 
-app.listen(3000, ()=>{
-    console.log("Tony, Engine Start")
+//Middleware
+app.use(express.static("public"))
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(router)
+
+app.use((error,req,res,next) => {
+    console.log
+})
+
+//Server Start
+app.listen(3000, () => {
+    console.log(`Tony, Engine Start`)
 })
