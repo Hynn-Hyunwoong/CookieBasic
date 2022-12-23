@@ -8,10 +8,10 @@ exports.findOne = async({ where }) => {
         
         const sql = `SELECT * FROM user WHERE ${payload}`
         const [[result]] = await db.query(sql)
-        console.log(result)
+        // console.log(result)
         return result
     } catch (e) {
-        // throw new Error(e)
+        throw new Error(e)
     }
 }
 

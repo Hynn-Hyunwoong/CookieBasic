@@ -7,9 +7,14 @@
     <title>Hynn's Signin</title>
 </head>
 <body>
-    <a href="/user/login">New Account</a>
-    <a href="/user/login">Sign-in</a>
+    {%if token %}{{token}} , Welcome to the World!
     <a href="/user/logout">Sign-out</a>
+    {% else %}
+    <a href="/user/login">Sign-in</a>
+    {% endif %}
+    <a href="/user/login">New Account</a>
+    
+    
     <br />
     <a href="/board/list">Move to Board</a>
 </body>

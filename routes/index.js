@@ -4,7 +4,8 @@ const router = express.Router()
 const user = require('./user.route')
 
 router.get('/',(req,res) =>{
-    res.render('index.html')
+    const {token} = req.cookies
+    res.render('index.html' ,{token})
 })
 
 router.use('/user',user)

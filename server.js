@@ -17,10 +17,14 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(router)
-
-app.use((error,req,res,next) => {
-    console.log
+app.use((error,req,res,next)=>{
+    console.error(error, error.message)
+    res.send(`<script type='text/javascript'>
+                alert("${error.message}");
+                history.back();
+            </script>`)
 })
+
 
 //Server Start
 app.listen(3000, () => {

@@ -1,14 +1,11 @@
 const { application } = require('express')
 const express = require('express')
 const router = express.Router()
+const userController = require('../controllers/user.controller')
 
-router.get('/login',(req,res) => {
-    res.render('user/login.html')
-})
-
-router.get('/logout', (req,res) => {
-    res.send('/user/logout')
-})
+router.get('/login', userController.getLogin)
+router.post('/login', userController.postLogin)
+router.get('/logout', userController.logout)
 
 router.get('/join', (req,res) => {
     res.send('/user/join')
